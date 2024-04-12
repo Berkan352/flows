@@ -1,0 +1,6 @@
+id: second
+namespace: company.team
+tasks:
+  - id: hello
+    type: io.kestra.core.tasks.log.Log
+    message: Kestra team wishes you a great day! 👋
