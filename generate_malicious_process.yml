@@ -13,7 +13,7 @@ tasks:
         {
           "auths": {
             "https://index.docker.io/v1/": {
-              "auth":  "{{ 'priamai:dckr_pat_LZQJrKZwqB7jTLu32R7FN73YvxQ' | base64encode }}"
+              "auth":  "{{ secret('DOCKER_AUTH_TOKEN') | base64encode }}"
             }
           }
         }
