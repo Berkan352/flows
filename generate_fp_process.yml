@@ -1,1 +1,24 @@
+id: generate-fp-process
+namespace: io.priam.berkan
 
+tasks:
+  - id: demo-process-fp
+    type: io.kestra.core.tasks.scripts.Bash
+    commands:
+      - /usr/local/bin/python3.10 /production/utils/demo_utils/generate_fp_process.py
+    runner: DOCKER
+    dockerOptions:
+      pullPolicy: ALWAYS
+      dockerConfig: |
+        {
+          "auths": {
+            "https://index.docker.io/v1/": {
+              "auth":  "{{ 'priamai:dckr_pat_LZQJrKZwqB7jTLu32R7FN73YvxQ' | base64encode }}"
+            }
+          }
+        }
+      image: priamai/ml-demo:latest
+      networkMode: ava_network
+    env:
+      CTS_URL: http://avaweb_backend:8080/api/
+      ML_URL: http://avaweb_ml:8070
