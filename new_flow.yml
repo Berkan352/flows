@@ -1,6 +1,24 @@
-id: hello-world
-namespace: company.team
+id: Community
+namespace: io.priam.berkan
+
 tasks:
-  - id: hello
-    type: io.kestra.core.tasks.log.Log
-    message: Kestra team wishes you a great day! 👋
+  - id: batch_community
+    type: io.kestra.core.tasks.scripts.Bash
+    commands:
+      - /usr/local/bin/python3.10 /production/utils/demo_utils/generate_malicious_process.py
+    runner: DOCKER
+    dockerOptions:
+      pullPolicy: ALWAYS
+      dockerConfig: |
+        {
+          "auths": {
+            "https://index.docker.io/v1/": {
+              "auth":  "{{ 'priamai:dckr_pat_LZQJrKZwqB7jTLu32R7FN73YvxQ' | base64encode }}"
+            }
+          }
+        }
+      image: priamai/ml-demo:latest
+      networkMode: ava_network
+    env:
+      CTS_URL: http://avaweb_backend:8080/api/
+      ML_URL: http://avaweb_ml:8070
