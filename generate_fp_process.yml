@@ -21,4 +21,4 @@ tasks:
       networkMode: ava_network
     env:
       CTS_URL: http://avaweb_backend:8080/api/
-      ML_URL: http://avaweb_ml:8070
+      ML_URL: http://avapi:8070
