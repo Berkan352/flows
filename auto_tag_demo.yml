@@ -1,8 +1,8 @@
-id: generate-fp-process
+id: auto-tag-demo
 namespace: io.priam.berkan
 
 tasks:
-  - id: demo-process-fp
+  - id: demo-auto-tag
     type: io.kestra.core.tasks.scripts.Bash
     commands:
       - /usr/local/bin/python3.10 /production/utils/demo_utils/auto_tag_demo.py
