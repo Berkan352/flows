@@ -1,0 +1,32 @@
+id: doc_parsing
+namespace: tutorial
+description: Data Engineering Pipelines
+
+inputs:
+  - id: file_url
+    type: STRING
+
+tasks:
+  - id: parse_doc
+    type: io.kestra.core.tasks.scripts.Bash
+    commands:
+      - /usr/local/bin/python3.10 /app/doc_parser.py
+
+    runner: DOCKER
+    dockerOptions:
+      pullPolicy: ALWAYS
+      dockerConfig: |
+        {
+          "auths": {
+            "https://index.docker.io/v1/": {
+              "auth":  "{{ 'priamai:dckr_pat_LZQJrKZwqB7jTLu32R7FN73YvxQ' | base64encode }}"
+            }
+          }
+        }
+      image: priamai/kestra-tasks:latest
+      networkMode: demo_network
+    env:
+      FILE_URL: "{{ inputs.file_url }}"
+      NEO4J_URI: "bolt://neo4j:7687"
+      NEO4J_USERNAME: "neo4j"
+      NEO4J_PASSWORD: "neo4jpassword"
