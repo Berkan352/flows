@@ -1,6 +1,6 @@
 id: doc_parsing
 namespace: tutorial
-description: Data Engineering Pipelines
+description: Document Embeding Job
 
 inputs:
   - id: file_url
@@ -10,7 +10,7 @@ tasks:
   - id: parse_doc
     type: io.kestra.core.tasks.scripts.Bash
     commands:
-      - /usr/local/bin/python3.10 /app/doc_parser.py
+      - /usr/local/bin/python3.10 /app/src/doc_parser.py
 
     runner: DOCKER
     dockerOptions:
@@ -24,7 +24,7 @@ tasks:
           }
         }
       image: priamai/kestra-tasks:latest
-      networkMode: demo_network
+      networkMode: ava_network
     env:
       FILE_URL: "{{ inputs.file_url }}"
       NEO4J_URI: "bolt://neo4j:7687"
