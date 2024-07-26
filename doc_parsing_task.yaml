@@ -10,7 +10,7 @@ tasks:
   - id: parse_doc
     type: io.kestra.core.tasks.scripts.Bash
     commands:
-      - /usr/local/bin/python3.10 /app/src/doc_parser.py
+      - /usr/local/bin/python3.11 /app/src/doc_parser.py
 
     runner: DOCKER
     dockerOptions:
