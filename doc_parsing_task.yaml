@@ -30,3 +30,8 @@ tasks:
       NEO4J_URI: "bolt://neo4j:7687"
       NEO4J_USERNAME: "neo4j"
       NEO4J_PASSWORD: "neo4jpassword"
+      IS_PRIVATE: "0"
+      GITHUB_USER: Berkan352
+      GITHUB_REPO: flows
+      GITHUB_BRANCH: docs
+      FILE_EXTENSION: (".md", ".txt", ".pdf", ".html")
