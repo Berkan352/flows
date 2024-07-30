@@ -27,3 +27,5 @@ triggers:
   - id: hourly
     type: io.kestra.plugin.core.trigger.Schedule
     cron: "@hourly"
+    stopAfter:
+      - FAILED
